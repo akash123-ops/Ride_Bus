@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideBus - Book Bus Tickets Online</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+  <!-- Top Notification Bar -->
+  <div class="notification-bar">
+    <p>🔥 Hot Deals! Get 10% OFF on your first booking. Use code: RIDEBUS10</p>
+  </div>
+
+  <!-- Header with Search -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🚌</span>
+          <span class="logo-text">RideBus</span>
+        </a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#" class="active"><i class="fas fa-bus"></i> Bus Tickets</a></li>
+          <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+          <li><a href="track.html"><i class="fas fa-map-marker-alt"></i> Track Bus</a></li>
+          <li><a href="offer.html"><i class="fas fa-tag"></i> Offers</a></li>
+          <li><a href="help.html"><i class="fas fa-headset"></i> Help</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions">
+        <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login/Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Search -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <h1 class="hero-title">Book Bus Tickets Online</h1>
+      <p class="hero-subtitle">Safe, Secure, Reliable Online Bus Ticket Booking</p>
+      
+      <div class="search-container">
+        <div class="search-tabs">
+          <button class="tab-btn active">One Way</button>
+          <button class="tab-btn">Round Trip</button>
+        </div>
+        
+        <form class="search-form" id="searchForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="from-city"><i class="fas fa-map-marker-alt"></i> From</label>
+              <input type="text" id="from-city" placeholder="Leaving from..." autocomplete="off" required>
+              <div class="suggestions"></div>
+            </div>
+            
+            <button class="swap-btn" type="button">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="form-group">
+              <label for="to-city"><i class="fas fa-map-marker-alt"></i> To</label>
+              <input type="text" id="to-city" placeholder="Going to..." autocomplete="off" required>
+              <div class="suggestions"></div>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="travel-date"><i class="fas fa-calendar-alt"></i> Date</label>
+              <input type="date" id="travel-date" required>
+              <div class="date-options">
+                <span class="date-option" data-days="0">Today</span>
+                <span class="date-option" data-days="1">Tomorrow</span>
+              </div>
+            </div>
+            
+            <button type="submit" class="search-btn">
+              <i class="fas fa-search"></i> Search Buses
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="offers-section">
+    <div class="container">
+      <h2 class="section-title">Exciting Offers</h2>
+      <div class="offers-slider">
+        <div class="offer-card">
+          <div class="offer-badge">10% OFF</div>
+          <div class="offer-content">
+            <h3>First Booking Discount</h3>
+            <p>Use code RIDEBUS10</p>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-badge">FLAT ₹100</div>
+          <div class="offer-content">
+            <h3>Weekend Special</h3>
+            <p>Valid on Saturdays & Sundays</p>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-badge">CASHBACK</div>
+          <div class="offer-content">
+            <h3>Pay with Paytm</h3>
+            <p>Get 5% cashback</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Routes -->
+  <section class="routes-section">
+    <div class="container">
+      <h2 class="section-title">Popular Routes</h2>
+      <div class="routes-grid">
+        <a href="#" class="route-card">
+          <span class="route-cities">Mumbai → Pune</span>
+          <span class="route-fare">From ₹299</span>
+        </a>
+        <a href="#" class="route-card">
+          <span class="route-cities">Delhi → Jaipur</span>
+          <span class="route-fare">From ₹499</span>
+        </a>
+        <a href="#" class="route-card">
+          <span class="route-cities">Bangalore → Chennai</span>
+          <span class="route-fare">From ₹399</span>
+        </a>
+        <a href="#" class="route-card">
+          <span class="route-cities">Hyderabad → Vijayawada</span>
+          <span class="route-fare">From ₹349</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bus Listing -->
+  <section class="bus-listing">
+    <div class="container">
+      <h2 class="section-title">Available Buses</h2>
+      <div class="bus-filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">AC</button>
+        <button class="filter-btn">Non-AC</button>
+        <button class="filter-btn">Sleeper</button>
+        <button class="filter-btn">Seater</button>
+      </div>
+      
+      <div class="bus-cards">
+        <!-- Sample Bus Card 1 -->
+        <div class="bus-card">
+          <div class="bus-header">
+            <div class="bus-operator">Sharma Travels</div>
+            <div class="bus-type">AC Sleeper (2+1)</div>
+          </div>
+          
+          <div class="bus-details">
+            <div class="timing">
+              <div class="departure">
+                <span class="time">22:30</span>
+                <span class="location">Mumbai</span>
+              </div>
+              <div class="duration">
+                <span>8h 30m</span>
+                <div class="timeline"></div>
+              </div>
+              <div class="arrival">
+                <span class="time">07:00</span>
+                <span class="location">Pune</span>
+              </div>
+            </div>
+            
+            <div class="amenities">
+              <span class="amenity" title="AC"><i class="fas fa-snowflake"></i></span>
+              <span class="amenity" title="Charging Point"><i class="fas fa-bolt"></i></span>
+              <span class="amenity" title="Water Bottle"><i class="fas fa-wine-bottle"></i></span>
+              <span class="amenity" title="Blanket"><i class="fas fa-bed"></i></span>
+            </div>
+          </div>
+          
+          <div class="bus-pricing">
+            <div class="price">
+              <span class="amount">₹599</span>
+              <span class="seats">12 seats left</span>
+            </div>
+            <button class="view-seats-btn">View Seats</button>
+          </div>
+        </div>
+        
+        <!-- Sample Bus Card 2 -->
+        <div class="bus-card">
+          <div class="bus-header">
+            <div class="bus-operator">Patel Tours</div>
+            <div class="bus-type">Non-AC Seater (2+2)</div>
+          </div>
+          
+          <div class="bus-details">
+            <div class="timing">
+              <div class="departure">
+                <span class="time">06:00</span>
+                <span class="location">Mumbai</span>
+              </div>
+              <div class="duration">
+                <span>6h 15m</span>
+                <div class="timeline"></div>
+              </div>
+              <div class="arrival">
+                <span class="time">12:15</span>
+                <span class="location">Pune</span>
+              </div>
+            </div>
+            
+            <div class="amenities">
+              <span class="amenity" title="Water Bottle"><i class="fas fa-wine-bottle"></i></span>
+            </div>
+          </div>
+          
+          <div class="bus-pricing">
+            <div class="price">
+              <span class="amount">₹399</span>
+              <span class="seats">25 seats left</span>
+            </div>
+            <button class="view-seats-btn">View Seats</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Download Banner -->
+  <section class="app-banner">
+    <div class="container">
+      <div class="app-content">
+        <h2>Book Bus Tickets Faster with RideBus App</h2>
+        <p>Download the app for exclusive offers and easy booking</p>
+        <div class="download-buttons">
+          <a href="#" class="download-btn">
+            <i class="fab fa-google-play"></i>
+            <span>GET IT ON<br><strong>Google Play</strong></span>
+          </a>
+          <a href="#" class="download-btn">
+            <i class="fab fa-apple"></i>
+            <span>Download on the<br><strong>App Store</strong></span>
+          </a>
+        </div>
+      </div>
+      <div class="app-image">
+        <img src="images/app-mockup.png" alt="RideBus Mobile App">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>About RideBus</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Info</h3>
+          <ul>
+            <li><a href="#">T&C</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Bus Operator Registration</a></li>
+            <li><a href="#">Agent Registration</a></li>
+            <li><a href="#">Insurance Partner</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Global Sites</h3>
+          <ul>
+            <li><a href="#">India</a></li>
+            <li><a href="#">Singapore</a></li>
+            <li><a href="#">Malaysia</a></li>
+            <li><a href="#">Indonesia</a></li>
+            <li><a href="#">Peru</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+          
+          <h3 class="contact-title">Contact Us</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-phone-alt"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> support@ridebus.com</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 RideBus Pvt Ltd. All rights reserved.</p>
+        <div class="payment-methods">
+          <img src="images/visa.png" alt="Visa">
+          <img src="images/mastercard.png" alt="Mastercard">
+          <img src="images/rupay.png" alt="Rupay">
+          <img src="images/paytm.png" alt="Paytm">
+          <img src="images/upi.png" alt="UPI">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

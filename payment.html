@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Booking - RideBus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+  <!-- Top Notification Bar -->
+  <div class="notification-bar">
+    <p>🔐 Secure Payment Processing | Your transaction is protected with 256-bit encryption</p>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🚌</span>
+          <span class="logo-text">RideBus</span>
+        </a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-bus"></i> Bus Tickets</a></li>
+          <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+          <li><a href="track.html"><i class="fas fa-map-marker-alt"></i> Track Bus</a></li>
+          <li><a href="offers.html"><i class="fas fa-tag"></i> Offers</a></li>
+          <li><a href="support.html"><i class="fas fa-headset"></i> Help</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions">
+        <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login/Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Payment Progress Bar -->
+  <section class="payment-progress">
+    <div class="container">
+      <div class="progress-steps">
+        <div class="step active">
+          <div class="step-number">1</div>
+          <div class="step-label">Review Booking</div>
+        </div>
+        <div class="step active">
+          <div class="step-number">2</div>
+          <div class="step-label">Passenger Details</div>
+        </div>
+        <div class="step active">
+          <div class="step-number">3</div>
+          <div class="step-label">Make Payment</div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-label">Booking Confirmed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Main Content -->
+  <section class="payment-main">
+    <div class="container">
+      <div class="payment-container">
+        <!-- Left Column - Booking Summary -->
+        <div class="booking-summary">
+          <h2 class="summary-title"><i class="fas fa-receipt"></i> Booking Summary</h2>
+          
+          <div class="journey-details">
+            <div class="route">
+              <div class="departure">
+                <div class="time">08:00</div>
+                <div class="city">Mumbai</div>
+              </div>
+              <div class="duration">
+                <div class="timeline"></div>
+                <div class="time-text">3h 30m</div>
+              </div>
+              <div class="arrival">
+                <div class="time">11:30</div>
+                <div class="city">Pune</div>
+              </div>
+            </div>
+            
+            <div class="bus-details">
+              <div class="bus-operator">Sharma Travels</div>
+              <div class="bus-type">AC Sleeper (2+1)</div>
+            </div>
+          </div>
+          
+          <div class="passenger-details">
+            <h3><i class="fas fa-users"></i> Passenger Details</h3>
+            <div class="passenger-list">
+              <div class="passenger">
+                <div class="name">Rahul Sharma (Adult)</div>
+                <div class="seat">Seat: A3 (Lower)</div>
+              </div>
+              <div class="passenger">
+                <div class="name">Priya Sharma (Adult)</div>
+                <div class="seat">Seat: A4 (Lower)</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fare-summary">
+            <h3><i class="fas fa-money-bill-wave"></i> Fare Summary</h3>
+            <div class="fare-details">
+              <div class="fare-row">
+                <span>Base Fare (2 Adults)</span>
+                <span>₹1,200</span>
+              </div>
+              <div class="fare-row">
+                <span>Taxes & Fees</span>
+                <span>₹120</span>
+              </div>
+              <div class="fare-row">
+                <span>Convenience Fee</span>
+                <span>₹30</span>
+              </div>
+              <div class="fare-row discount">
+                <span>Discount (WEEKEND15)</span>
+                <span>-₹180</span>
+              </div>
+              <div class="fare-row total">
+                <span>Total Amount</span>
+                <span>₹1,170</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cancellation-policy">
+            <h3><i class="fas fa-info-circle"></i> Cancellation Policy</h3>
+            <ul>
+              <li>Cancellation allowed up to 6 hours before departure</li>
+              <li>75% refund if cancelled 24+ hours before departure</li>
+              <li>50% refund if cancelled 6-24 hours before departure</li>
+              <li>No refund for cancellations within 6 hours of departure</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Right Column - Payment Options -->
+        <div class="payment-options">
+          <h2 class="payment-title"><i class="fas fa-credit-card"></i> Select Payment Method</h2>
+          
+          <div class="payment-tabs">
+            <button class="tab-btn active" data-tab="cards">Cards</button>
+            <button class="tab-btn" data-tab="wallets">Wallets</button>
+            <button class="tab-btn" data-tab="netbanking">Net Banking</button>
+            <button class="tab-btn" data-tab="upi">UPI</button>
+          </div>
+          
+          <div class="tab-content active" id="cards-tab">
+            <div class="saved-cards">
+              <h3>Saved Cards</h3>
+              <div class="card-list">
+                <label class="card-option">
+                  <input type="radio" name="payment-method" checked>
+                  <div class="card-details">
+                    <div class="card-type visa">VISA</div>
+                    <div class="card-number">•••• •••• •••• 1234</div>
+                    <div class="card-expiry">Exp: 05/25</div>
+                  </div>
+                </label>
+                
+                <label class="card-option">
+                  <input type="radio" name="payment-method">
+                  <div class="card-details">
+                    <div class="card-type mastercard">Mastercard</div>
+                    <div class="card-number">•••• •••• •••• 5678</div>
+                    <div class="card-expiry">Exp: 11/24</div>
+                  </div>
+                </label>
+              </div>
+              
+              <button class="add-card-btn">
+                <i class="fas fa-plus"></i> Add New Card
+              </button>
+            </div>
+            
+            <div class="new-card-form">
+              <h3>Enter Card Details</h3>
+              <form id="cardPaymentForm">
+                <div class="form-group">
+                  <label for="card-number">Card Number</label>
+                  <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                  <div class="card-icons">
+                    <img src="images/visa.png" alt="Visa">
+                    <img src="images/mastercard.png" alt="Mastercard">
+                    <img src="images/rupay.png" alt="RuPay">
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="card-name">Name on Card</label>
+                    <input type="text" id="card-name" placeholder="As on card">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="card-expiry">Expiry Date</label>
+                    <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="card-cvv">CVV</label>
+                    <input type="password" id="card-cvv" placeholder="•••" maxlength="3">
+                    <button type="button" class="cvv-help" title="3-digit code on back of card">
+                      <i class="fas fa-question-circle"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="save-card">
+                    <input type="checkbox" id="save-card"> Save this card for future payments
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="wallets-tab">
+            <div class="wallet-options">
+              <label class="wallet-option">
+                <input type="radio" name="wallet-method">
+                <div class="wallet-details">
+                  <img src="images/paytm.png" alt="Paytm">
+                  <span>Paytm Wallet</span>
+                </div>
+              </label>
+              
+              <label class="wallet-option">
+                <input type="radio" name="wallet-method">
+                <div class="wallet-details">
+                  <img src="images/amazonpay.png" alt="Amazon Pay">
+                  <span>Amazon Pay</span>
+                </div>
+              </label>
+              
+              <label class="wallet-option">
+                <input type="radio" name="wallet-method">
+                <div class="wallet-details">
+                  <img src="images/phonepe.png" alt="PhonePe">
+                  <span>PhonePe</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="netbanking-tab">
+            <div class="bank-options">
+              <label class="bank-option">
+                <input type="radio" name="bank-method">
+                <div class="bank-details">
+                  <img src="images/hdfc.png" alt="HDFC Bank">
+                  <span>HDFC Bank</span>
+                </div>
+              </label>
+              
+              <label class="bank-option">
+                <input type="radio" name="bank-method">
+                <div class="bank-details">
+                  <img src="images/sbi.png" alt="SBI">
+                  <span>State Bank of India</span>
+                </div>
+              </label>
+              
+              <label class="bank-option">
+                <input type="radio" name="bank-method">
+                <div class="bank-details">
+                  <img src="images/icici.png" alt="ICICI">
+                  <span>ICICI Bank</span>
+                </div>
+              </label>
+              
+              <label class="bank-option">
+                <input type="radio" name="bank-method">
+                <div class="bank-details">
+                  <img src="images/axis.png" alt="Axis">
+                  <span>Axis Bank</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="upi-tab">
+            <div class="upi-options">
+              <label class="upi-option">
+                <input type="radio" name="upi-method" checked>
+                <div class="upi-details">
+                  <img src="images/gpay.png" alt="Google Pay">
+                  <span>Google Pay</span>
+                </div>
+              </label>
+              
+              <label class="upi-option">
+                <input type="radio" name="upi-method">
+                <div class="upi-details">
+                  <img src="images/phonepe.png" alt="PhonePe">
+                  <span>PhonePe</span>
+                </div>
+              </label>
+              
+              <label class="upi-option">
+                <input type="radio" name="upi-method">
+                <div class="upi-details">
+                  <img src="images/paytm.png" alt="Paytm">
+                  <span>Paytm UPI</span>
+                </div>
+              </label>
+              
+              <div class="upi-id-input">
+                <label for="upi-id">Enter UPI ID</label>
+                <input type="text" id="upi-id" placeholder="username@upi">
+              </div>
+            </div>
+          </div>
+          
+          <div class="payment-security">
+            <div class="security-badge">
+              <i class="fas fa-lock"></i>
+              <span>Secure Payment</span>
+            </div>
+            <div class="security-badge">
+              <i class="fas fa-shield-alt"></i>
+              <span>PCI DSS Compliant</span>
+            </div>
+          </div>
+          
+          <button class="pay-now-btn" id="payNowBtn">
+            <i class="fas fa-lock"></i> Pay ₹1,170 Now
+          </button>
+          
+          <div class="payment-terms">
+            <p>By proceeding, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Security Section -->
+  <section class="payment-security-section">
+    <div class="container">
+      <h2 class="section-title">Your Payment is Secure With Us</h2>
+      <div class="security-features">
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <h3>256-bit Encryption</h3>
+          <p>All transactions are protected with bank-grade security</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-user-lock"></i>
+          <h3>PCI DSS Compliant</h3>
+          <p>We meet the highest security standards for payment processing</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-money-bill-wave"></i>
+          <h3>No Cost EMI Options</h3>
+          <p>Available on select credit cards with no additional charges</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer content same as index.html -->
+      </div>
+    </div>
+  </footer>
+
+  <!-- Payment Processing Modal -->
+  <div class="payment-modal hidden" id="paymentModal">
+    <div class="modal-content">
+      <div class="processing-animation">
+        <div class="loader"></div>
+        <h3>Processing Your Payment</h3>
+        <p>Please wait while we complete your transaction</p>
+      </div>
+      
+      <div class="payment-success hidden">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Payment Successful!</h3>
+        <p>Your booking has been confirmed</p>
+        <div class="booking-details">
+          <p><strong>Booking ID:</strong> RB12345678</p>
+          <p><strong>Amount Paid:</strong> ₹1,170</p>
+        </div>
+        <div class="modal-buttons">
+          <a href="booking-details.html" class="view-booking-btn">View Booking Details</a>
+          <a href="index.html" class="home-btn">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/payment.js"></script>
+</body>
+</html>

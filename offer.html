@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Offers - RideBus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+  <!-- Top Notification Bar -->
+  <div class="notification-bar">
+    <p>🔥 Limited Time Offers! Book now and save up to 30% on your journey</p>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🚌</span>
+          <span class="logo-text">RideBus</span>
+        </a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-bus"></i> Bus Tickets</a></li>
+          <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+          <li><a href="track.html"><i class="fas fa-map-marker-alt"></i> Track Bus</a></li>
+          <li><a href="offers.html" class="active"><i class="fas fa-tag"></i> Offers</a></li>
+          <li><a href="help.html"><i class="fas fa-headset"></i> Help</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions">
+        <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login/Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Offers Hero Section -->
+  <section class="offers-hero">
+    <div class="container">
+      <h1 class="hero-title">Exclusive Bus Ticket Offers</h1>
+      <p class="hero-subtitle">Save big on your next journey with these limited-time deals</p>
+    </div>
+  </section>
+
+  <!-- Offers Filter -->
+  <section class="offers-filter">
+    <div class="container">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-category="all">All Offers</button>
+        <button class="filter-tab" data-category="discount">Discounts</button>
+        <button class="filter-tab" data-category="cashback">Cashback</button>
+        <button class="filter-tab" data-category="combo">Combo Deals</button>
+        <button class="filter-tab" data-category="bank">Bank Offers</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Grid -->
+  <section class="offers-grid-section">
+    <div class="container">
+      <div class="offers-grid">
+        <!-- Offer Card 1 -->
+        <div class="offer-card" data-categories="discount bank">
+          <div class="offer-badge">FLAT 15% OFF</div>
+          <div class="offer-image">
+            <img src="images/offer1.jpg" alt="Weekend Special Offer">
+          </div>
+          <div class="offer-content">
+            <h3>Weekend Special Discount</h3>
+            <p>Get flat 15% off on all weekend travels. Use code WEEKEND15 at checkout.</p>
+            <div class="offer-meta">
+              <span class="offer-validity"><i class="far fa-calendar-alt"></i> Valid till 31 Dec 2023</span>
+              <span class="offer-code">Code: WEEKEND15</span>
+            </div>
+            <button class="offer-apply-btn">Apply Offer</button>
+          </div>
+        </div>
+        
+        <!-- Offer Card 2 -->
+        <div class="offer-card" data-categories="cashback">
+          <div class="offer-badge">₹100 CASHBACK</div>
+          <div class="offer-image">
+            <img src="images/offer2.jpg" alt="First Booking Offer">
+          </div>
+          <div class="offer-content">
+            <h3>First Booking Cashback</h3>
+            <p>Get ₹100 cashback on your first booking with RideBus. No code required.</p>
+            <div class="offer-meta">
+              <span class="offer-validity"><i class="far fa-calendar-alt"></i> Valid for new users only</span>
+              <span class="offer-code">Auto-applied</span>
+            </div>
+            <button class="offer-apply-btn">Apply Offer</button>
+          </div>
+        </div>
+        
+        <!-- Offer Card 3 -->
+        <div class="offer-card" data-categories="bank">
+          <div class="offer-badge">10% OFF</div>
+          <div class="offer-image">
+            <img src="images/offer3.jpg" alt="HDFC Bank Offer">
+          </div>
+          <div class="offer-content">
+            <h3>HDFC Bank Special</h3>
+            <p>Get 10% discount up to ₹150 when paying with HDFC credit cards.</p>
+            <div class="offer-meta">
+              <span class="offer-validity"><i class="far fa-calendar-alt"></i> Till 15 Jan 2024</span>
+              <span class="offer-code">Code: HDFC10</span>
+            </div>
+            <button class="offer-apply-btn">Apply Offer</button>
+          </div>
+        </div>
+        
+        <!-- Offer Card 4 -->
+        <div class="offer-card" data-categories="combo">
+          <div class="offer-badge">COMBO DEAL</div>
+          <div class="offer-image">
+            <img src="images/offer4.jpg" alt="Family Package Offer">
+          </div>
+          <div class="offer-content">
+            <h3>Family Package</h3>
+            <p>Book for 4 people and get 1 child ticket free. Limited seats available.</p>
+            <div class="offer-meta">
+              <span class="offer-validity"><i class="far fa-calendar-alt"></i> Valid on select routes</span>
+              <span class="offer-code">Code: FAMILYFREE</span>
+            </div>
+            <button class="offer-apply-btn">Apply Offer</button>
+          </div>
+        </div>
+        
+        <!-- Offer Card 5 -->
+        <div class="offer-card" data-categories="discount">
+          <div class="offer-badge">20% OFF</div>
+          <div class="offer-image">
+            <img src="images/offer5.jpg" alt="Early Bird Offer">
+          </div>
+          <div class="offer-content">
+            <h3>Early Bird Discount</h3>
+            <p>Book 7 days in advance and get 20% off on select buses.</p>
+            <div class="offer-meta">
+              <span class="offer-validity"><i class="far fa-calendar-alt"></i> No expiry</span>
+              <span class="offer-code">Code: EARLY20</span>
+            </div>
+            <button class="offer-apply-btn">Apply Offer</button>
+          </div>
+        </div>
+        
+        <!-- Offer Card 6 -->
+        <div class="offer-card" data-categories="cashback bank">
+          <div class="offer-badge">5% CASHBACK</div>
+          <div class="offer-image">
+            <img src="images/offer6.jpg" alt="Paytm Cashback Offer">
+          </div>
+          <div class="offer-content">
+            <h3>Paytm Cashback</h3>
+            <p>Get 5% cashback up to ₹100 when paying via Paytm wallet.</p>
+            <div class="offer-meta">
+              <span class="offer-validity"><i class="far fa-calendar-alt"></i> Till 31 Jan 2024</span>
+              <span class="offer-code">Auto-applied</span>
+            </div>
+            <button class="offer-apply-btn">Apply Offer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Use Offers -->
+  <section class="offer-instructions">
+    <div class="container">
+      <h2 class="section-title">How to Use RideBus Offers</h2>
+      <div class="instructions-grid">
+        <div class="instruction-step">
+          <div class="step-number">1</div>
+          <h3>Find Your Offer</h3>
+          <p>Browse through our available offers and select one that suits your journey.</p>
+        </div>
+        <div class="instruction-step">
+          <div class="step-number">2</div>
+          <h3>Book Your Tickets</h3>
+          <p>Proceed to book your bus tickets as usual through our website or app.</p>
+        </div>
+        <div class="instruction-step">
+          <div class="step-number">3</div>
+          <h3>Apply Offer Code</h3>
+          <p>Enter the offer code at checkout or select the applicable payment method.</p>
+        </div>
+        <div class="instruction-step">
+          <div class="step-number">4</div>
+          <h3>Enjoy Your Savings</h3>
+          <p>Complete your booking and enjoy instant discounts or cashback.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms and Conditions -->
+  <section class="offer-terms">
+    <div class="container">
+      <h2 class="section-title">Offer Terms & Conditions</h2>
+      <div class="terms-content">
+        <ul>
+          <li>All offers are subject to availability and may be withdrawn without prior notice.</li>
+          <li>Only one offer can be applied per transaction unless specified otherwise.</li>
+          <li>Offers cannot be combined with any other promotions or discounts.</li>
+          <li>RideBus reserves the right to modify or cancel offers at any time.</li>
+          <li>Cashback offers will be credited within 7-10 working days after journey completion.</li>
+          <li>Bank offers are subject to the respective bank's terms and conditions.</li>
+        </ul>
+        <button class="terms-toggle-btn">Show More Terms <i class="fas fa-chevron-down"></i></button>
+        <div class="additional-terms hidden">
+          <ul>
+            <li>Discount percentages are calculated on base fare only.</li>
+            <li>Some offers may be limited to specific routes or operators.</li>
+            <li>Offer validity dates are inclusive.</li>
+            <li>In case of cancellation, offer benefits will be forfeited.</li>
+            <li>RideBus's decision on all offer-related matters will be final.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer content same as index.html -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/offers.js"></script>
+</body>
+</html>

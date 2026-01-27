@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Bus - RideBus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.ico">
+  <!-- Leaflet CSS for maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+</head>
+<body>
+  <!-- Top Notification Bar -->
+  <div class="notification-bar">
+    <p>🚌 Real-time bus tracking available for all active journeys</p>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🚌</span>
+          <span class="logo-text">RideBus</span>
+        </a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-bus"></i> Bus Tickets</a></li>
+          <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+          <li><a href="track.html" class="active"><i class="fas fa-map-marker-alt"></i> Track Bus</a></li>
+          <li><a href="offer.html"><i class="fas fa-tag"></i> Offers</a></li>
+          <li><a href="help.html"><i class="fas fa-headset"></i> Help</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions">
+        <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login/Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Track Bus Hero Section -->
+  <section class="track-hero">
+    <div class="container">
+      <h1 class="hero-title">Track Your Bus in Real-Time</h1>
+      <p class="hero-subtitle">Never miss your bus with live location tracking</p>
+    </div>
+  </section>
+
+  <!-- Track Bus Content -->
+  <section class="track-content">
+    <div class="container">
+      <div class="track-container">
+        <!-- Track Bus Form -->
+        <div class="track-form-container">
+          <div class="track-form-header">
+            <h2><i class="fas fa-bus"></i> Enter Your Bus Details</h2>
+            <p>Track your bus using booking ID or bus number</p>
+          </div>
+          
+          <form class="track-form" id="trackBusForm">
+            <div class="form-group">
+              <label for="tracking-method">Track Using:</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="tracking-method" value="booking" checked>
+                  <span class="radio-checkmark"></span>
+                  Booking ID
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tracking-method" value="bus">
+                  <span class="radio-checkmark"></span>
+                  Bus Number
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group" id="booking-id-group">
+              <label for="booking-id"><i class="fas fa-receipt"></i> Booking ID</label>
+              <input type="text" id="booking-id" placeholder="Enter your booking reference">
+            </div>
+            
+            <div class="form-group hidden" id="bus-number-group">
+              <label for="bus-number"><i class="fas fa-bus"></i> Bus Number</label>
+              <input type="text" id="bus-number" placeholder="Enter bus number (e.g. MH01AB1234)">
+            </div>
+            
+            <div class="form-group">
+              <label for="travel-date"><i class="fas fa-calendar-alt"></i> Travel Date</label>
+              <input type="date" id="travel-date">
+            </div>
+            
+            <button type="submit" class="track-btn">
+              <i class="fas fa-search-location"></i> Track Bus
+            </button>
+          </form>
+          
+          <div class="track-help">
+            <p><i class="fas fa-question-circle"></i> Don't have your booking details? <a href="support.html">Contact support</a></p>
+          </div>
+        </div>
+        
+        <!-- Track Bus Results -->
+        <div class="track-results hidden" id="trackResults">
+          <div class="results-header">
+            <h2><i class="fas fa-map-marked-alt"></i> Live Bus Tracking</h2>
+            <div class="last-updated">
+              <i class="fas fa-sync-alt"></i> Updated: <span id="lastUpdated">Just now</span>
+            </div>
+          </div>
+          
+          <div class="results-content">
+            <!-- Bus Info Card -->
+            <div class="bus-info-card">
+              <div class="bus-info-header">
+                <div class="bus-number">
+                  <i class="fas fa-bus"></i> <span id="trackedBusNumber">MH01AB1234</span>
+                </div>
+                <div class="bus-operator" id="trackedBusOperator">Sharma Travels</div>
+              </div>
+              
+              <div class="bus-route">
+                <div class="route-stop departure">
+                  <div class="stop-time" id="departureTime">08:00</div>
+                  <div class="stop-name" id="departureCity">Mumbai</div>
+                  <div class="stop-status departed">Departed</div>
+                </div>
+                
+                <div class="route-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%"></div>
+                    <div class="current-location" style="left: 65%">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                  </div>
+                  <div class="progress-time">
+                    <span>65% completed</span>
+                    <span id="remainingTime">1h 25m remaining</span>
+                  </div>
+                </div>
+                
+                <div class="route-stop arrival">
+                  <div class="stop-time" id="arrivalTime">11:30</div>
+                  <div class="stop-name" id="arrivalCity">Pune</div>
+                  <div class="stop-status">Estimated arrival</div>
+                </div>
+              </div>
+              
+              <div class="bus-stats">
+                <div class="stat-item">
+                  <div class="stat-label">Current Speed</div>
+                  <div class="stat-value" id="currentSpeed">62 km/h</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-label">Distance Covered</div>
+                  <div class="stat-value" id="distanceCovered">97 km</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-label">Next Stop</div>
+                  <div class="stat-value" id="nextStop">Lonavala (in 15 min)</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Map Container -->
+            <div class="map-container">
+              <div id="busMap"></div>
+              <div class="map-controls">
+                <button class="map-btn" id="zoomIn"><i class="fas fa-plus"></i></button>
+                <button class="map-btn" id="zoomOut"><i class="fas fa-minus"></i></button>
+                <button class="map-btn" id="locateBus"><i class="fas fa-bus"></i></button>
+              </div>
+            </div>
+            
+            <!-- Bus Stops Timeline -->
+            <div class="bus-stops-timeline">
+              <h3><i class="fas fa-map-pin"></i> Route Stops</h3>
+              
+              <div class="timeline-container">
+                <div class="timeline-stop passed">
+                  <div class="stop-marker"></div>
+                  <div class="stop-details">
+                    <div class="stop-name">Mumbai Central</div>
+                    <div class="stop-time">08:00 (Departed)</div>
+                  </div>
+                </div>
+                
+                <div class="timeline-stop passed">
+                  <div class="stop-marker"></div>
+                  <div class="stop-details">
+                    <div class="stop-name">Thane</div>
+                    <div class="stop-time">08:45 (Departed)</div>
+                  </div>
+                </div>
+                
+                <div class="timeline-stop passed">
+                  <div class="stop-marker"></div>
+                  <div class="stop-details">
+                    <div class="stop-name">Kalamboli</div>
+                    <div class="stop-time">09:30 (Departed)</div>
+                  </div>
+                </div>
+                
+                <div class="timeline-stop current">
+                  <div class="stop-marker"></div>
+                  <div class="stop-details">
+                    <div class="stop-name">Lonavala</div>
+                    <div class="stop-time">10:15 (Expected)</div>
+                    <div class="stop-distance">15 km away</div>
+                  </div>
+                </div>
+                
+                <div class="timeline-stop upcoming">
+                  <div class="stop-marker"></div>
+                  <div class="stop-details">
+                    <div class="stop-name">Pune Station</div>
+                    <div class="stop-time">11:30 (Expected)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tracking FAQs -->
+      <div class="track-faq">
+        <h2><i class="fas fa-question-circle"></i> Bus Tracking FAQs</h2>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How accurate is the bus tracking?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our bus tracking system uses GPS technology to provide real-time location updates. The location is typically accurate within 100-200 meters and updates every 30-60 seconds.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Why can't I see my bus on the map?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>If you can't see your bus, it might be because: (1) The bus hasn't started its journey yet, (2) The GPS device on the bus is temporarily offline, or (3) You entered incorrect tracking details. Please verify your details or contact support.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I track my bus without a booking ID?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, you can track buses using the bus number and travel date. However, tracking with a booking ID provides more accurate results as it's directly linked to your specific journey.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How often is the bus location updated?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>The bus location updates every 30-60 seconds while the bus is in motion. During stops or when stationary, updates may be less frequent to conserve battery on the tracking device.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer content same as index.html -->
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS for maps -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/track.js"></script>
+</body>
+</html>

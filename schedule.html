@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Schedule - RideBus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+  <!-- Top Notification Bar -->
+  <div class="notification-bar">
+    <p>🚌 Book now! Get 10% OFF on your first booking. Use code: RIDEBUS10</p>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">🚌</span>
+          <span class="logo-text">RideBus</span>
+        </a>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-bus"></i> Bus Tickets</a></li>
+          <li><a href="schedule.html" class="active"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+          <li><a href="track.html"><i class="fas fa-map-marker-alt"></i> Track Bus</a></li>
+          <li><a href="offer.html"><i class="fas fa-tag"></i> Offers</a></li>
+          <li><a href="help.html"><i class="fas fa-headset"></i> Help</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions">
+        <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login/Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Schedule Hero Section -->
+  <section class="schedule-hero">
+    <div class="container">
+      <h1 class="hero-title">Bus Timetable & Schedule</h1>
+      <p class="hero-subtitle">Find departure times for all routes</p>
+    </div>
+  </section>
+
+  <!-- Schedule Search -->
+  <section class="schedule-search">
+    <div class="container">
+      <div class="search-container">
+        <form class="search-form" id="scheduleSearchForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="schedule-from-city"><i class="fas fa-map-marker-alt"></i> From City</label>
+              <input type="text" id="schedule-from-city" placeholder="Enter departure city" autocomplete="off">
+              <div class="suggestions"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="schedule-to-city"><i class="fas fa-map-marker-alt"></i> To City</label>
+              <input type="text" id="schedule-to-city" placeholder="Enter arrival city" autocomplete="off">
+              <div class="suggestions"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="schedule-date"><i class="fas fa-calendar-alt"></i> Date</label>
+              <input type="date" id="schedule-date">
+              <div class="date-options">
+                <span class="date-option" data-days="0">Today</span>
+                <span class="date-option" data-days="1">Tomorrow</span>
+              </div>
+            </div>
+            
+            <button type="submit" class="search-btn">
+              <i class="fas fa-search"></i> Find Schedule
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Content -->
+  <section class="schedule-content">
+    <div class="container">
+      <div class="schedule-tabs">
+        <button class="tab-btn active" data-tab="all">All Buses</button>
+        <button class="tab-btn" data-tab="overnight">Overnight Journeys</button>
+        <button class="tab-btn" data-tab="morning">Morning Buses</button>
+        <button class="tab-btn" data-tab="afternoon">Afternoon Buses</button>
+        <button class="tab-btn" data-tab="evening">Evening Buses</button>
+      </div>
+      
+      <div class="schedule-filters">
+        <div class="filter-group">
+          <label>Sort By:</label>
+          <select id="sort-by">
+            <option value="departure">Departure Time</option>
+            <option value="arrival">Arrival Time</option>
+            <option value="duration">Journey Duration</option>
+            <option value="price">Price (Low to High)</option>
+            <option value="price-desc">Price (High to Low)</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label>Bus Type:</label>
+          <div class="filter-options">
+            <label class="filter-checkbox">
+              <input type="checkbox" checked> AC
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" checked> Non-AC
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" checked> Sleeper
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" checked> Seater
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="schedule-results">
+        <!-- Results will be loaded here via JavaScript -->
+        <div class="loading-spinner">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading schedule...</p>
+        </div>
+      </div>
+      
+      <div class="pagination">
+        <button class="pagination-btn disabled"><i class="fas fa-chevron-left"></i> Previous</button>
+        <div class="page-numbers">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <span>...</span>
+          <button class="page-btn">5</button>
+        </div>
+        <button class="pagination-btn">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Routes Section -->
+  <section class="popular-routes">
+    <div class="container">
+      <h2 class="section-title">Popular Bus Routes</h2>
+      <div class="routes-grid">
+        <div class="route-card">
+          <div class="route-info">
+            <h3>Mumbai to Pune</h3>
+            <p>From ₹299</p>
+          </div>
+          <div class="route-times">
+            <div class="time-slot">
+              <span class="time">06:00</span>
+              <span class="duration">3h 30m</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">08:30</span>
+              <span class="duration">3h 45m</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">22:00</span>
+              <span class="duration">3h 15m</span>
+            </div>
+          </div>
+          <a href="#" class="view-all-btn">View All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="route-card">
+          <div class="route-info">
+            <h3>Delhi to Jaipur</h3>
+            <p>From ₹499</p>
+          </div>
+          <div class="route-times">
+            <div class="time-slot">
+              <span class="time">07:00</span>
+              <span class="duration">5h 30m</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">12:30</span>
+              <span class="duration">6h 00m</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">23:30</span>
+              <span class="duration">5h 45m</span>
+            </div>
+          </div>
+          <a href="#" class="view-all-btn">View All <i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="route-card">
+          <div class="route-info">
+            <h3>Bangalore to Chennai</h3>
+            <p>From ₹399</p>
+          </div>
+          <div class="route-times">
+            <div class="time-slot">
+              <span class="time">05:30</span>
+              <span class="duration">6h 30m</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">10:00</span>
+              <span class="duration">7h 00m</span>
+            </div>
+            <div class="time-slot">
+              <span class="time">21:00</span>
+              <span class="duration">6h 15m</span>
+            </div>
+          </div>
+          <a href="#" class="view-all-btn">View All <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer content same as index.html -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/schedule.js"></script>
+</body>
+</html>

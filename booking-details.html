@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RideBus - Booking Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS will go here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .booking-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .booking-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .booking-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .booking-status {
+            background-color: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .booking-details {
+            margin-bottom: 25px;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 12px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            width: 150px;
+            color: #7f8c8d;
+        }
+
+        .detail-value {
+            flex: 1;
+        }
+
+        .bus-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .bus-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .bus-timing {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .timing-box {
+            text-align: center;
+        }
+
+        .timing-time {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .timing-place {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .timing-duration {
+            text-align: center;
+            padding-top: 15px;
+            color: #7f8c8d;
+        }
+
+        .passenger-details {
+            margin-top: 25px;
+        }
+
+        .passenger-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .passenger-table th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .passenger-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #c0392b;
+        }
+
+        .download-btn {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .download-btn:hover {
+            background-color: #219653;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .booking-container {
+                flex-direction: column;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .bus-timing {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>RideBus</h1>
+    </div>
+
+    <div class="container">
+        <div class="booking-container">
+            <div class="booking-card">
+                <div class="booking-header">
+                    <h2 class="booking-title">Booking Details</h2>
+                    <span class="booking-status">Confirmed</span>
+                </div>
+
+                <div class="booking-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Booking ID:</span>
+                        <span class="detail-value" id="booking-id">RB789456123</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Booking Date:</span>
+                        <span class="detail-value" id="booking-date">15 June 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total Amount:</span>
+                        <span class="detail-value" id="total-amount">₹1,250.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Payment Method:</span>
+                        <span class="detail-value" id="payment-method">Credit Card (****4532)</span>
+                    </div>
+                </div>
+
+                <div class="bus-info">
+                    <div class="bus-name" id="bus-name">Sharma Travels AC Sleeper (2+1)</div>
+                    <div class="bus-timing">
+                        <div class="timing-box">
+                            <div class="timing-time" id="departure-time">22:30</div>
+                            <div class="timing-place" id="departure-place">Delhi</div>
+                        </div>
+                        <div class="timing-box">
+                            <div class="timing-duration">12h 30m</div>
+                        </div>
+                        <div class="timing-box">
+                            <div class="timing-time" id="arrival-time">11:00</div>
+                            <div class="timing-place" id="arrival-place">Jaipur</div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Travel Date:</span>
+                        <span class="detail-value" id="travel-date">20 June 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Boarding Point:</span>
+                        <span class="detail-value" id="boarding-point">Delhi ISBT Kashmiri Gate - Gate No. 2 (22:15)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Dropping Point:</span>
+                        <span class="detail-value" id="dropping-point">Jaipur Sindhi Camp Bus Stand (11:00)</span>
+                    </div>
+                </div>
+
+                <div class="passenger-details">
+                    <h3>Passenger Details</h3>
+                    <table class="passenger-table">
+                        <thead>
+                            <tr>
+                                <th>Seat No.</th>
+                                <th>Passenger Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>L1</td>
+                                <td>Akash Kumar singh</td>
+                                <td>25</td>
+                                <td>Male</td>
+                            </tr>
+                            <tr>
+                                <td>U5</td>
+                                <td>Anurag Sharma</td>
+                                <td>22</td>
+                                <td>Female</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn download-btn" onclick="downloadTicket()">
+                        <i class="fas fa-download"></i> Download Ticket
+                    </button>
+                    <button class="btn btn-secondary" onclick="cancelBooking()">
+                        <i class="fas fa-times"></i> Cancel Booking
+                    </button>
+                    <button class="btn btn-primary" onclick="goToHome()">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 RideBus. All rights reserved.</p>
+    </div>
+
+    <script>
+        // JavaScript functionality
+        function downloadTicket() {
+            alert('Your ticket will be downloaded shortly.');
+            // In a real implementation, this would generate a PDF ticket
+        }
+
+        function cancelBooking() {
+            if (confirm('Are you sure you want to cancel this booking?')) {
+                alert('Your booking has been cancelled. Refund will be processed within 5-7 working days.');
+                document.querySelector('.booking-status').textContent = 'Cancelled';
+                document.querySelector('.booking-status').style.backgroundColor = '#e74c3c';
+            }
+        }
+
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
+        // You would typically fetch booking details from localStorage or an API
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example of getting data from localStorage
+            const bookingData = JSON.parse(localStorage.getItem('bookingData')) || {
+                id: 'RB' + Math.floor(Math.random() * 1000000000),
+                date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }),
+                amount: '₹1,250.00',
+                paymentMethod: 'Credit Card (****4532)',
+                busName: 'Sharma Travels AC Sleeper (2+1)',
+                departureTime: '22:30',
+                departurePlace: 'Delhi',
+                arrivalTime: '11:00',
+                arrivalPlace: 'Jaipur',
+                travelDate: '20 June 2023',
+                boardingPoint: 'Delhi ISBT Kashmiri Gate - Gate No. 2 (22:15)',
+                droppingPoint: 'Jaipur Sindhi Camp Bus Stand (11:00)',
+                passengers: [
+                    { seat: 'L1', name: 'Amit Kumar', age: 25, gender: 'Male' },
+                    { seat: 'U5', name: 'Priya Sharma', age: 22, gender: 'Female' }
+                ]
+            };
+
+            // Populate the page with data
+            document.getElementById('booking-id').textContent = bookingData.id;
+            document.getElementById('booking-date').textContent = bookingData.date;
+            document.getElementById('total-amount').textContent = bookingData.amount;
+            document.getElementById('payment-method').textContent = bookingData.paymentMethod;
+            document.getElementById('bus-name').textContent = bookingData.busName;
+            document.getElementById('departure-time').textContent = bookingData.departureTime;
+            document.getElementById('departure-place').textContent = bookingData.departurePlace;
+            document.getElementById('arrival-time').textContent = bookingData.arrivalTime;
+            document.getElementById('arrival-place').textContent = bookingData.arrivalPlace;
+            document.getElementById('travel-date').textContent = bookingData.travelDate;
+            document.getElementById('boarding-point').textContent = bookingData.boardingPoint;
+            document.getElementById('dropping-point').textContent = bookingData.droppingPoint;
+
+            // Populate passenger table
+            const passengerTable = document.querySelector('.passenger-table tbody');
+            passengerTable.innerHTML = '';
+            bookingData.passengers.forEach(passenger => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${passenger.seat}</td>
+                    <td>${passenger.name}</td>
+                    <td>${passenger.age}</td>
+                    <td>${passenger.gender}</td>
+                `;
+                passengerTable.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>
